@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0cckcoyt4cbq"]
+
+[ext_resource type="PackedScene" uid="uid://cw4jtcxo3tl7t" path="res://Scenes/spaceship.tscn" id="1_7vp0v"]
+[ext_resource type="Texture2D" uid="uid://canq6bd5a444w" path="res://Assets/Space Background.png" id="2_46kkg"]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="Spaceship" parent="." instance=ExtResource("1_7vp0v")]
+position = Vector2(610, 340)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(609, 335)
+process_callback = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+z_index = -10
+texture_filter = 1
+position = Vector2(-6, 256)
+scale = Vector2(6, 6)
+texture = ExtResource("2_46kkg")
