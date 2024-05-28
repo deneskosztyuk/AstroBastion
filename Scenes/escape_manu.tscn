@@ -20,6 +20,7 @@ offset_right = 2376.0
 offset_bottom = 1258.0
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 817.0
 offset_top = 120.0
 offset_right = 1176.0
@@ -35,7 +36,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Resume"
 
-[node name="MainMenu" type="Button" parent="Panel/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
