@@ -9,6 +9,7 @@ radius = 15.0
 height = 88.0
 
 [node name="Spaceship" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_vtw2p")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]

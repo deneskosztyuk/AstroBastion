@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://252c6hyvvo1n"]
+
+[ext_resource type="Script" path="res://scripts/escape_menu.gd" id="1_rqmpr"]
+
+[node name="EscapeManu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rqmpr")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -297.0
+offset_top = -167.0
+offset_right = 2376.0
+offset_bottom = 1258.0
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 817.0
+offset_top = 120.0
+offset_right = 1176.0
+offset_bottom = 346.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 359.0
+offset_bottom = 224.0
+
+[node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Exit"

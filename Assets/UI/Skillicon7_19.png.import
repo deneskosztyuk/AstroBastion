@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://canq6bd5a444w"
-path="res://.godot/imported/Space Background.png-0392a8b6a68a03f31359c373d225401b.ctex"
+uid="uid://cpd2t613m6csp"
+path="res://.godot/imported/Skillicon7_19.png-e286f8d24e9da7891d6b6ca6e1849a88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Space Background.png"
-dest_files=["res://.godot/imported/Space Background.png-0392a8b6a68a03f31359c373d225401b.ctex"]
+source_file="res://Assets/UI/Skillicon7_19.png"
+dest_files=["res://.godot/imported/Skillicon7_19.png-e286f8d24e9da7891d6b6ca6e1849a88.ctex"]
 
 [params]
 

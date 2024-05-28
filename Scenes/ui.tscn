@@ -1,0 +1,234 @@
+[gd_scene load_steps=17 format=3 uid="uid://d1ax2b0grxser"]
+
+[ext_resource type="Texture2D" uid="uid://8fu6r6popyxb" path="res://Assets/UI/UI_Flat_Frame_01_Standard.png" id="1_jf8sm"]
+[ext_resource type="Texture2D" uid="uid://wkubr7bykoyi" path="res://Assets/Turrets/turret_01_mk3.png" id="2_56rtq"]
+[ext_resource type="Texture2D" uid="uid://bhqbyx28y5q88" path="res://Assets/Turrets/weapons.png" id="3_772ty"]
+[ext_resource type="Texture2D" uid="uid://dw7r1ry56hly7" path="res://Assets/UI/Skillicon7_32.png" id="4_im4s2"]
+[ext_resource type="Texture2D" uid="uid://cpd2t613m6csp" path="res://Assets/UI/Skillicon7_19.png" id="5_de1ir"]
+[ext_resource type="Texture2D" uid="uid://dxjjme4otnl12" path="res://Assets/UI/Skillicon7_05.png" id="6_1qr6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cngp"]
+atlas = ExtResource("2_56rtq")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4e6c3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cngp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7x61k"]
+font_size = 15
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woun3"]
+atlas = ExtResource("3_772ty")
+region = Rect2(192, 192, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ioe8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woun3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ku6k"]
+atlas = ExtResource("3_772ty")
+region = Rect2(192, 96, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqr2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ku6k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pfrj"]
+atlas = ExtResource("3_772ty")
+region = Rect2(288, 288, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16r1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pfrj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rlrse"]
+font_size = 22
+
+[node name="UI" type="Node2D"]
+z_index = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+
+[node name="Control" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 212.0
+offset_bottom = 212.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CanonTurret" type="Sprite2D" parent="Camera2D/Control"]
+texture_filter = 1
+position = Vector2(-150, 220)
+texture = ExtResource("1_jf8sm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Control/CanonTurret"]
+position = Vector2(0, 10)
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_4e6c3")
+animation = &"idle"
+
+[node name="Label" type="Label" parent="Camera2D/Control/CanonTurret"]
+offset_left = -39.0
+offset_top = 48.0
+offset_right = 30.0
+offset_bottom = 74.0
+text = "Cost: 50
+"
+label_settings = SubResource("LabelSettings_7x61k")
+
+[node name="ResourceIcon2" type="Sprite2D" parent="Camera2D/Control/CanonTurret/Label"]
+z_index = 1
+position = Vector2(69, 12)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_im4s2")
+
+[node name="RocketTurret" type="Sprite2D" parent="Camera2D/Control"]
+texture_filter = 1
+position = Vector2(-50, 220)
+texture = ExtResource("1_jf8sm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Control/RocketTurret"]
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_ioe8y")
+
+[node name="Label2" type="Label" parent="Camera2D/Control/RocketTurret"]
+offset_left = -41.0
+offset_top = 48.0
+offset_right = 28.0
+offset_bottom = 74.0
+text = "Cost: 150"
+label_settings = SubResource("LabelSettings_7x61k")
+
+[node name="ResourceIcon2" type="Sprite2D" parent="Camera2D/Control/RocketTurret/Label2"]
+z_index = 1
+position = Vector2(77, 12)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_im4s2")
+
+[node name="LaserTurret" type="Sprite2D" parent="Camera2D/Control"]
+texture_filter = 1
+position = Vector2(50, 220)
+texture = ExtResource("1_jf8sm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Control/LaserTurret"]
+position = Vector2(0, 10)
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_qqr2l")
+
+[node name="Label3" type="Label" parent="Camera2D/Control/LaserTurret"]
+offset_left = -42.0
+offset_top = 48.0
+offset_right = 27.0
+offset_bottom = 74.0
+text = "Cost: 300
+"
+label_settings = SubResource("LabelSettings_7x61k")
+
+[node name="ResourceIcon2" type="Sprite2D" parent="Camera2D/Control/LaserTurret/Label3"]
+z_index = 1
+position = Vector2(78, 12)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_im4s2")
+
+[node name="RailgunTurret" type="Sprite2D" parent="Camera2D/Control"]
+texture_filter = 1
+position = Vector2(150, 220)
+texture = ExtResource("1_jf8sm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Control/RailgunTurret"]
+position = Vector2(0, 8)
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_16r1q")
+
+[node name="Label4" type="Label" parent="Camera2D/Control/RailgunTurret"]
+offset_left = -42.0
+offset_top = 48.0
+offset_right = 27.0
+offset_bottom = 74.0
+text = "Cost: 500
+"
+label_settings = SubResource("LabelSettings_7x61k")
+
+[node name="ResourceIcon2" type="Sprite2D" parent="Camera2D/Control/RailgunTurret/Label4"]
+z_index = 1
+position = Vector2(77, 12)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_im4s2")
+
+[node name="ResourceIcon" type="Sprite2D" parent="Camera2D/Control"]
+z_index = 1
+position = Vector2(-918, -732)
+texture = ExtResource("4_im4s2")
+
+[node name="ResourceLabel" type="Label" parent="Camera2D/Control/ResourceIcon"]
+offset_left = 13.0
+offset_top = -16.0
+offset_right = 149.0
+offset_bottom = 15.0
+text = "Resource: 96"
+label_settings = SubResource("LabelSettings_rlrse")
+
+[node name="KillCountIcon" type="Sprite2D" parent="Camera2D/Control"]
+z_index = 1
+position = Vector2(-737, -732)
+texture = ExtResource("5_de1ir")
+
+[node name="KillCountLabel" type="Label" parent="Camera2D/Control/KillCountIcon"]
+offset_left = 12.0
+offset_top = -16.0
+offset_right = 152.0
+offset_bottom = 15.0
+text = "Kill Count: 14"
+label_settings = SubResource("LabelSettings_rlrse")
+
+[node name="TimeRemaining" type="Sprite2D" parent="Camera2D/Control"]
+z_index = 1
+position = Vector2(-553, -732)
+texture = ExtResource("6_1qr6v")
+
+[node name="TimeRemainingLabel" type="Label" parent="Camera2D/Control/TimeRemaining"]
+offset_left = 11.0
+offset_top = -16.0
+offset_right = 115.0
+offset_bottom = 15.0
+text = "Time Remaining: 695 "
+label_settings = SubResource("LabelSettings_rlrse")
+
+[node name="Panel" type="Panel" parent="Camera2D"]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -920.0
+offset_bottom = -500.0
+scale = Vector2(47.9898, 1)
