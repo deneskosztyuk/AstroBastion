@@ -1,18 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw4jtcxo3tl7t"]
+[gd_scene load_steps=5 format=3 uid="uid://cw4jtcxo3tl7t"]
 
-[ext_resource type="Texture2D" uid="uid://caf1g3mbbpemj" path="res://Assets/Spaceship/1.png" id="1_kql0a"]
 [ext_resource type="Script" path="res://scripts/spaceship.gd" id="1_vtw2p"]
+[ext_resource type="Texture2D" uid="uid://dkkkqmho1452" path="res://Assets/Spaceship/Spike_SpriteSheet.png" id="2_1l630"]
+[ext_resource type="PackedScene" uid="uid://cv5xivsgypcjs" path="res://Scenes/healthbar.tscn" id="3_fjrd4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ieucl"]
-radius = 46.6667
-height = 213.333
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wt7em"]
+radius = 15.0
+height = 88.0
 
 [node name="Spaceship" type="Node2D"]
 script = ExtResource("1_vtw2p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_kql0a")
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
-shape = SubResource("CapsuleShape2D_ieucl")
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_1l630")
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_wt7em")
+
+[node name="Healthbar" parent="CharacterBody2D" instance=ExtResource("3_fjrd4")]
+offset_left = -32.0
+offset_top = -55.0
+offset_right = 32.0
+offset_bottom = -51.0

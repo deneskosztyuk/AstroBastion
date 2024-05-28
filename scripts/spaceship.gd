@@ -1,14 +1,9 @@
+# spaceship.gd
 extends Node2D
 
-# Declare the health variable
-var health: int = 100
+@onready var collision = $CharacterBody2D/CollisionShape2D
+@onready var healthbar = $CharacterBody2D/Healthbar  # Adjusted path to correctly reference the healthbar
 
-# Function to take damage
-func take_damage(amount: int):
-	health -= amount
-	if health <= 0:
-		die()
-
-# Function to handle spaceship destruction
-func die():
-	queue_free()  # or implement a more complex destruction logic
+func _ready():
+	var health = 100
+	healthbar.init_health(health)
