@@ -8,23 +8,22 @@
 radius = 15.0
 height = 88.0
 
-[node name="Spaceship" type="Node2D"]
+[node name="Spaceship" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+collision_mask = 2
 script = ExtResource("1_vtw2p")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_1l630")
 hframes = 3
 vframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_wt7em")
 
-[node name="Healthbar" parent="CharacterBody2D" instance=ExtResource("3_fjrd4")]
+[node name="Healthbar" parent="." instance=ExtResource("3_fjrd4")]
 offset_left = -32.0
 offset_top = -55.0
 offset_right = 32.0

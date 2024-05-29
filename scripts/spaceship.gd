@@ -1,20 +1,27 @@
-# spaceship.gd
-extends Node2D
+extends CharacterBody2D
 
-@onready var collision = $CharacterBody2D/CollisionShape2D
-@onready var healthbar = $CharacterBody2D/Healthbar
+@onready var healthbar = $Healthbar
+@export var transition_effect = preload("res://Scenes/transition_effect.tscn")
 
-var health = 100
+var max_health = 100
 
 func _ready():
-	healthbar.init_health(health)
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(2, true)
+	healthbar.init_health(max_health)
 
 func take_damage(amount):
-	health -= amount
-	healthbar.value = health  # Update the health bar value
-	if health <= 0:
+	var new_health = healthbar.health - amount
+	healthbar.set_health(new_health)
+	if new_health <= 0:
 		die()
 
 func die():
-	queue_free()  # Placeholder for spaceship destruction logic
-	# You can add additional logic here for game over, explosion animation, etc.
+	var transition_instance = transition_effect.instantiate()
+	get_tree().root.add_child(transition_instance)
+
+	# Use a call deferred to ensure scene change is handled correctly
+	call_deferred("_deferred_free")
+
+func _deferred_free():
+	queue_free()

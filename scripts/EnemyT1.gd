@@ -1,42 +1,43 @@
 extends CharacterBody2D
 
 @export var speed = 70
+@export var damage = 10
+@export var max_health = 50
+@onready var healthbar = $Healthbar  # Ensure this is the correct path to your health bar node
 
 var spaceship = null
 var direction = Vector2.ZERO
 
 func _ready():
-	pass
+	set_collision_layer_value(2, true)
+	set_collision_mask_value(1, true)
+	healthbar.init_health(max_health)
 	
 	# Ensure spaceship reference is valid
+	spaceship = get_parent().get_node_or_null("/root/MainGame/Spaceship")
 	if spaceship == null:
-		spaceship = get_parent().get_node_or_null("/root/MainGame/Spaceship")
-		if spaceship == null:
-			push_error("Spaceship node not found!")
-	
-	# Connect the area_entered signal
-	var area = get_node_or_null("DetectionArea")  # Replace "DetectionArea" with the actual name of your Area2D node
-	if area:
-		area.area_entered.connect(_on_area_entered)
+		push_error("Spaceship node not found!")
+
+func _physics_process(delta):
+	if is_instance_valid(spaceship):
+		direction = (spaceship.global_position - global_position).normalized()
+		velocity = direction * speed
+		
+		var collision = move_and_collide(velocity * delta)
+		if collision:
+			var collider = collision.get_collider()
+			if collider == spaceship:
+				print("Spaceship collision detected")
+				spaceship.take_damage(damage)
+				queue_free()
 	else:
-		push_error("Area2D node not found!")
+		spaceship = null  # Handle case when spaceship is no longer valid
 
-func _process(_delta):
-	if spaceship:
-		var distance_to_spaceship = global_position.distance_to(spaceship.global_position)
-		if distance_to_spaceship > 10:  # Adjust the distance threshold as needed
-			direction = (spaceship.global_position - global_position).normalized()
-			velocity = direction * speed
-			move_and_slide()
-		else:
-			velocity = Vector2.ZERO
+func take_damage(amount):
+	var new_health = healthbar.health - amount
+	healthbar.set_health(new_health)
+	if new_health <= 0:
+		die()
 
-func _on_area_entered(area):
-	print("Collision detected with:", area)
-	if area == spaceship.get_node("CharacterBody2D/CollisionShape2D"):
-		spaceship.take_damage(10)
-		queue_free()
-
-
-func set_spaceship(spaceship_node):
-	spaceship = spaceship_node
+func die():
+	queue_free()

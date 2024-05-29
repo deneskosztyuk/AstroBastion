@@ -17,7 +17,6 @@ func _input(event):
 		is_paused = !is_paused
 		get_tree().paused = is_paused
 		visible = is_paused
-		print("Esc key pressed")
 		
 func _on_ResumeButton_pressed():
 	print("Resume button pressed")
@@ -33,7 +32,7 @@ func _on_MainMenuButton_pressed():
 
 
 func _on_OptionsButton_pressed():
-	print("Options button pressed")
+	pass
 
 func _on_ExitButton_pressed():
 	print("Exit button pressed")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d14lsnjx8p6jw"]
+[gd_scene load_steps=7 format=3 uid="uid://d14lsnjx8p6jw"]
 
 [ext_resource type="Script" path="res://scripts/EnemyT1.gd" id="1_0k3ii"]
 [ext_resource type="Texture2D" uid="uid://dj0dlskvr7txm" path="res://Assets/Enemy/BlueRedGreen_Spacecraft_V1.0.png" id="2_dtann"]
+[ext_resource type="PackedScene" uid="uid://cv5xivsgypcjs" path="res://Scenes/healthbar.tscn" id="3_745t4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j3tve"]
 atlas = ExtResource("2_dtann")
@@ -22,14 +23,23 @@ animations = [{
 radius = 36.0139
 
 [node name="EnemyT1" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_0k3ii")
+speed = 100
+damage = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_kmsys")
 
-[node name="DetectionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_i24e1")
+
+[node name="Healthbar" parent="." instance=ExtResource("3_745t4")]
+offset_left = -33.0
+offset_top = -44.0
+offset_right = 31.0
+offset_bottom = -40.0
+max_value = 50.0
+value = 50.0
