@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var healthbar = $Healthbar
 @export var transition_effect = preload("res://Scenes/transition_effect.tscn")
 
-var max_health = 100
+var max_health = 200
 
 func _ready():
 	set_collision_layer_value(1, true)

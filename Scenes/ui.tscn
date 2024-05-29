@@ -1,26 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1ax2b0grxser"]
+[gd_scene load_steps=16 format=3 uid="uid://d1ax2b0grxser"]
 
+[ext_resource type="Script" path="res://scripts/UI.gd" id="1_7b0j5"]
 [ext_resource type="Texture2D" uid="uid://8fu6r6popyxb" path="res://Assets/UI/UI_Flat_Frame_01_Standard.png" id="1_jf8sm"]
-[ext_resource type="Texture2D" uid="uid://wkubr7bykoyi" path="res://Assets/Turrets/turret_01_mk3.png" id="2_56rtq"]
+[ext_resource type="PackedScene" uid="uid://daedxkydy8e3t" path="res://Scenes/TurretT1.tscn" id="2_7lyj0"]
 [ext_resource type="Texture2D" uid="uid://bhqbyx28y5q88" path="res://Assets/Turrets/weapons.png" id="3_772ty"]
 [ext_resource type="Texture2D" uid="uid://dw7r1ry56hly7" path="res://Assets/UI/Skillicon7_32.png" id="4_im4s2"]
 [ext_resource type="Texture2D" uid="uid://cpd2t613m6csp" path="res://Assets/UI/Skillicon7_19.png" id="5_de1ir"]
 [ext_resource type="Texture2D" uid="uid://dxjjme4otnl12" path="res://Assets/UI/Skillicon7_05.png" id="6_1qr6v"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8cngp"]
-atlas = ExtResource("2_56rtq")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4e6c3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8cngp")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7x61k"]
 font_size = 15
@@ -76,7 +62,9 @@ animations = [{
 font_size = 22
 
 [node name="UI" type="Node2D"]
+visibility_layer = 2
 z_index = 1
+script = ExtResource("1_7b0j5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
@@ -93,11 +81,8 @@ texture_filter = 1
 position = Vector2(-150, 220)
 texture = ExtResource("1_jf8sm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Control/CanonTurret"]
-position = Vector2(0, 10)
-scale = Vector2(1.1, 1.1)
-sprite_frames = SubResource("SpriteFrames_4e6c3")
-animation = &"idle"
+[node name="TurretT1Visual" parent="Camera2D/Control/CanonTurret" instance=ExtResource("2_7lyj0")]
+position = Vector2(0, 8)
 
 [node name="Label" type="Label" parent="Camera2D/Control/CanonTurret"]
 offset_left = -39.0
@@ -113,6 +98,13 @@ z_index = 1
 position = Vector2(69, 12)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_im4s2")
+
+[node name="TurretT1Button2" type="Button" parent="Camera2D/Control/CanonTurret"]
+offset_left = -47.0
+offset_top = -47.0
+offset_right = 47.0
+offset_bottom = 47.0
+flat = true
 
 [node name="RocketTurret" type="Sprite2D" parent="Camera2D/Control"]
 texture_filter = 1
@@ -232,3 +224,5 @@ offset_top = -540.0
 offset_right = -920.0
 offset_bottom = -500.0
 scale = Vector2(47.9898, 1)
+
+[connection signal="pressed" from="Camera2D/Control/CanonTurret/TurretT1Button2" to="." method="_on_turret_t_1_button_2_pressed"]

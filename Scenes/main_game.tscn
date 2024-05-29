@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cuya74g3av2ph" path="res://Assets/VFX/3/1_10.png" id="13_c6w6u"]
 [ext_resource type="Texture2D" uid="uid://b1ol3inf8eev3" path="res://Assets/VFX/3/1_11.png" id="14_2atgn"]
 [ext_resource type="Texture2D" uid="uid://cssmy1beu80vh" path="res://Assets/VFX/Sparks-Sheet.png" id="15_p8gxd"]
-[ext_resource type="PackedScene" uid="uid://d1ax2b0grxser" path="res://Scenes/ui.tscn" id="16_5lba6"]
+[ext_resource type="PackedScene" uid="uid://d1ax2b0grxser" path="res://Scenes/UI.tscn" id="16_5lba6"]
 [ext_resource type="PackedScene" uid="uid://252c6hyvvo1n" path="res://Scenes/escape_manu.tscn" id="17_4ujdx"]
 [ext_resource type="Script" path="res://scripts/GameMaster.gd" id="18_whbp2"]
 
