@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b315uvltg6aru"]
+[gd_scene load_steps=6 format=3 uid="uid://d14lsnjx8p6jw"]
 
 [ext_resource type="Script" path="res://scripts/EnemyT1.gd" id="1_0k3ii"]
 [ext_resource type="Texture2D" uid="uid://dj0dlskvr7txm" path="res://Assets/Enemy/BlueRedGreen_Spacecraft_V1.0.png" id="2_dtann"]
@@ -18,8 +18,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv3cd"]
-size = Vector2(30, 27)
+[sub_resource type="CircleShape2D" id="CircleShape2D_i24e1"]
+radius = 36.0139
 
 [node name="EnemyT1" type="CharacterBody2D"]
 script = ExtResource("1_0k3ii")
@@ -28,6 +28,8 @@ script = ExtResource("1_0k3ii")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_kmsys")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_hv3cd")
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_i24e1")

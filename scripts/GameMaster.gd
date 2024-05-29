@@ -17,8 +17,8 @@ func _on_spawn_timer_timeout():
 func spawn_enemy():
 	var enemy_instance = enemy_scene.instantiate()
 	# Randomize enemy spawn position within the specified range
-	var rand_x = randf_range(-100.0, 2000.0)  # Use randf_range for floating point numbers
-	var rand_y = randf_range(-100.0, 1200.0)  # Use randf_range for floating point numbers
+	var rand_x = randf_range(-200.0, 2300.0)  # Use randf_range for floating point numbers
+	var rand_y = randf_range(-200.0, 1500.0)  # Use randf_range for floating point numbers
 	enemy_instance.global_position = Vector2(rand_x, rand_y)
 	add_child(enemy_instance)
 	if spaceship != null:
