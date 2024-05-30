@@ -23,7 +23,7 @@ animations = [{
 size = Vector2(40, 78)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_txas8"]
-radius = 161.0
+radius = 257.0
 
 [node name="TurretT1" type="CharacterBody2D"]
 z_index = 2
@@ -39,9 +39,13 @@ position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_d1hav")
 
 [node name="TargetLockZone" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionZone" type="CollisionShape2D" parent="TargetLockZone"]
 shape = SubResource("CircleShape2D_txas8")
+
+[node name="ProjectileSpawnPoint" type="Node2D" parent="."]
+position = Vector2(0, -53)
 
 [connection signal="body_entered" from="TargetLockZone" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="TargetLockZone" to="." method="_on_area_2d_body_exited"]

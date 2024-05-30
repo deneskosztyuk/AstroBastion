@@ -42,18 +42,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w16n1"]
 size = Vector2(16, 7)
 
-[node name="Projectile" type="RigidBody2D"]
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_66okb")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_1k5bh")
 animation = &"flying"
 autoplay = "flying"
 frame = 3
 frame_progress = 0.730107
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_w16n1")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

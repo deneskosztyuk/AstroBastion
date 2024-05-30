@@ -22,7 +22,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_i24e1"]
 radius = 36.0139
 
-[node name="EnemyT1" type="CharacterBody2D"]
+[node name="EnemyT1" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 script = ExtResource("1_0k3ii")
 speed = 100

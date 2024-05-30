@@ -1,3 +1,4 @@
+# EnemyT1.gd
 extends CharacterBody2D
 
 @export var speed = 70
@@ -12,6 +13,7 @@ func _ready():
 	set_collision_layer_value(2, true)
 	set_collision_mask_value(1, true)
 	healthbar.init_health(max_health)
+	add_to_group("enemies")
 	
 	# Ensure spaceship reference is valid
 	spaceship = get_parent().get_node_or_null("/root/MainGame/Spaceship")

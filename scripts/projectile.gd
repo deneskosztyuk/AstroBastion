@@ -1,22 +1,31 @@
 # Projectile.gd
-extends RigidBody2D
+extends CharacterBody2D
 
 @export var speed = 500
-var velocity = Vector2()
-
-@onready var sprite = $AnimatedSprite2D
+var _velocity = Vector2()
+@onready var sprite = $Area2D/AnimatedSprite2D
 
 func _ready():
-	self.connect("body_entered", Callable(self, "_on_body_entered"))
+	set_physics_process(false)
 
 func _physics_process(delta):
-	move_and_collide(velocity * delta)
-	sprite.play("flying")
+	var collision = move_and_collide(_velocity * delta)
+	if collision:
+		handle_collision(collision)
 
 func launch(dir):
-	velocity = dir.normalized() * speed
+	_velocity = dir.normalized() * speed
+	set_physics_process(true)
+	sprite.play("flying")
 
-func _on_body_entered(body):
+func _on_area_2d_body_entered(body):
 	if body.has_method("take_damage"):
-		body.take_damage(10)  # Replace with your damage value
+		body.take_damage(10)  
+		queue_free()
+
+func handle_collision(_collision):
+	# Handle collision logic, e.g., apply damage or destroy the projectile
 	queue_free()
+
+
+
