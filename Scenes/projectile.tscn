@@ -48,6 +48,7 @@ collision_mask = 2
 script = ExtResource("1_66okb")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_1k5bh")

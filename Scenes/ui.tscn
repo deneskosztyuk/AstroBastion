@@ -69,6 +69,14 @@ script = ExtResource("1_7b0j5")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
 
+[node name="Panel" type="Panel" parent="Camera2D"]
+z_index = -1
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -920.0
+offset_bottom = -500.0
+scale = Vector2(47.9898, 1)
+
 [node name="Control" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
@@ -84,7 +92,7 @@ texture = ExtResource("1_jf8sm")
 [node name="TurretT1Visual" parent="Camera2D/Control/CanonTurret" instance=ExtResource("2_7lyj0")]
 position = Vector2(0, 8)
 
-[node name="Label" type="Label" parent="Camera2D/Control/CanonTurret"]
+[node name="CostLabel" type="Label" parent="Camera2D/Control/CanonTurret"]
 offset_left = -39.0
 offset_top = 48.0
 offset_right = 30.0
@@ -93,7 +101,7 @@ text = "Cost: 50
 "
 label_settings = SubResource("LabelSettings_7x61k")
 
-[node name="ResourceIcon2" type="Sprite2D" parent="Camera2D/Control/CanonTurret/Label"]
+[node name="ResourceIcon2" type="Sprite2D" parent="Camera2D/Control/CanonTurret/CostLabel"]
 z_index = 1
 position = Vector2(69, 12)
 scale = Vector2(0.8, 0.8)
@@ -106,12 +114,21 @@ offset_right = 47.0
 offset_bottom = 47.0
 flat = true
 
+[node name="TurretsInSceneLabelT1" type="Label" parent="Camera2D/Control/CanonTurret"]
+offset_left = 21.0
+offset_top = -50.0
+offset_right = 61.0
+offset_bottom = -27.0
+text = "0/3
+"
+
 [node name="RocketTurret" type="Sprite2D" parent="Camera2D/Control"]
 texture_filter = 1
 position = Vector2(-50, 220)
 texture = ExtResource("1_jf8sm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Control/RocketTurret"]
+position = Vector2(0, 3)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_ioe8y")
 
@@ -128,6 +145,13 @@ z_index = 1
 position = Vector2(77, 12)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_im4s2")
+
+[node name="TurretsInSceneLabelT2" type="Label" parent="Camera2D/Control/RocketTurret"]
+offset_left = 21.0
+offset_top = -50.0
+offset_right = 61.0
+offset_bottom = -27.0
+text = "0/2"
 
 [node name="LaserTurret" type="Sprite2D" parent="Camera2D/Control"]
 texture_filter = 1
@@ -154,6 +178,13 @@ position = Vector2(78, 12)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_im4s2")
 
+[node name="TurretsInSceneLabelT3" type="Label" parent="Camera2D/Control/LaserTurret"]
+offset_left = 21.0
+offset_top = -50.0
+offset_right = 61.0
+offset_bottom = -27.0
+text = "0/2"
+
 [node name="RailgunTurret" type="Sprite2D" parent="Camera2D/Control"]
 texture_filter = 1
 position = Vector2(150, 220)
@@ -179,50 +210,53 @@ position = Vector2(77, 12)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_im4s2")
 
-[node name="ResourceIcon" type="Sprite2D" parent="Camera2D/Control"]
+[node name="TurretsInSceneLabelT2" type="Label" parent="Camera2D/Control/RailgunTurret"]
+offset_left = 21.0
+offset_top = -50.0
+offset_right = 61.0
+offset_bottom = -27.0
+text = "0/1"
+
+[node name="Resource" type="Node" parent="Camera2D/Control"]
+
+[node name="ResourceIcon" type="Sprite2D" parent="Camera2D/Control/Resource"]
 z_index = 1
-position = Vector2(-918, -732)
+position = Vector2(-918, -520)
 texture = ExtResource("4_im4s2")
 
-[node name="ResourceLabel" type="Label" parent="Camera2D/Control/ResourceIcon"]
-offset_left = 13.0
-offset_top = -16.0
-offset_right = 149.0
-offset_bottom = 15.0
-text = "Resource: 96"
+[node name="ResourceLabel" type="Label" parent="Camera2D/Control/Resource"]
+offset_left = -905.0
+offset_top = -536.0
+offset_right = -769.0
+offset_bottom = -505.0
 label_settings = SubResource("LabelSettings_rlrse")
 
-[node name="KillCountIcon" type="Sprite2D" parent="Camera2D/Control"]
+[node name="KillCount" type="Node" parent="Camera2D/Control"]
+
+[node name="KillCountIcon" type="Sprite2D" parent="Camera2D/Control/KillCount"]
 z_index = 1
-position = Vector2(-737, -732)
+position = Vector2(-737, -520)
 texture = ExtResource("5_de1ir")
 
-[node name="KillCountLabel" type="Label" parent="Camera2D/Control/KillCountIcon"]
+[node name="KillCountLabel" type="Label" parent="Camera2D/Control/KillCount/KillCountIcon"]
 offset_left = 12.0
 offset_top = -16.0
 offset_right = 152.0
 offset_bottom = 15.0
-text = "Kill Count: 14"
 label_settings = SubResource("LabelSettings_rlrse")
 
-[node name="TimeRemaining" type="Sprite2D" parent="Camera2D/Control"]
+[node name="TimeRemaining" type="Node" parent="Camera2D/Control"]
+
+[node name="TimeRemainingObj" type="Sprite2D" parent="Camera2D/Control/TimeRemaining"]
 z_index = 1
-position = Vector2(-553, -732)
+position = Vector2(-553, -520)
 texture = ExtResource("6_1qr6v")
 
-[node name="TimeRemainingLabel" type="Label" parent="Camera2D/Control/TimeRemaining"]
+[node name="TimeRemainingLabel" type="Label" parent="Camera2D/Control/TimeRemaining/TimeRemainingObj"]
 offset_left = 11.0
 offset_top = -16.0
 offset_right = 115.0
 offset_bottom = 15.0
-text = "Time Remaining: 695 "
 label_settings = SubResource("LabelSettings_rlrse")
-
-[node name="Panel" type="Panel" parent="Camera2D"]
-offset_left = -960.0
-offset_top = -540.0
-offset_right = -920.0
-offset_bottom = -500.0
-scale = Vector2(47.9898, 1)
 
 [connection signal="pressed" from="Camera2D/Control/CanonTurret/TurretT1Button2" to="." method="_on_turret_t_1_button_2_pressed"]

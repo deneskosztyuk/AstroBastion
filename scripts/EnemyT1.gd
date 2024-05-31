@@ -1,9 +1,9 @@
-# EnemyT1.gd
 extends CharacterBody2D
 
 @export var speed = 70
 @export var damage = 10
 @export var max_health = 50
+@export var resource_value = 10
 @onready var healthbar = $Healthbar  # Ensure this is the correct path to your health bar node
 
 var spaceship = null
@@ -36,10 +36,17 @@ func _physics_process(delta):
 		spaceship = null  # Handle case when spaceship is no longer valid
 
 func take_damage(amount):
+	print("Enemy took damage:", amount)
 	var new_health = healthbar.health - amount
 	healthbar.set_health(new_health)
 	if new_health <= 0:
 		die()
 
 func die():
+	print("Enemy died")
+	# Notify the GameMaster to add resources and increment the kill count
+	var game_master = get_parent().get_node("/root/MainGame/GameMaster")
+	if game_master:
+		game_master.add_resource(resource_value)
+		game_master.increment_kill_count()
 	queue_free()

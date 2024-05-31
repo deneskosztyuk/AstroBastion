@@ -1,4 +1,3 @@
-# Projectile.gd
 extends CharacterBody2D
 
 @export var speed = 500
@@ -19,13 +18,11 @@ func launch(dir):
 	sprite.play("flying")
 
 func _on_area_2d_body_entered(body):
+	print("Projectile collided with:", body)
 	if body.has_method("take_damage"):
 		body.take_damage(10)  
-		queue_free()
+		queue_free()  # Destroy the projectile after collision
 
 func handle_collision(_collision):
 	# Handle collision logic, e.g., apply damage or destroy the projectile
 	queue_free()
-
-
-
