@@ -22,3 +22,5 @@ z_index = -10
 texture_filter = 1
 scale = Vector2(10, 10)
 texture = ExtResource("2_q5f8q")
+
+[node name="Node" type="Node" parent="."]
