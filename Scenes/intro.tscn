@@ -1,15 +1,177 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw7xxlyvt6mmv"]
+[gd_scene load_steps=37 format=3 uid="uid://dw7xxlyvt6mmv"]
 
 [ext_resource type="Texture2D" uid="uid://dkkkqmho1452" path="res://Assets/Spaceship/Spike_SpriteSheet.png" id="1_bryvo"]
+[ext_resource type="Script" path="res://scripts/intro.gd" id="1_lhtco"]
 [ext_resource type="Texture2D" uid="uid://canq6bd5a444w" path="res://Assets/UI/Space Background.png" id="2_q5f8q"]
+[ext_resource type="Texture2D" uid="uid://cklt6qbodxme1" path="res://Assets/VFX/3/1_0.png" id="3_txuk3"]
+[ext_resource type="FontFile" uid="uid://dgwg5i7d2wh33" path="res://Assets/Misc/m3x6.ttf" id="4_d3vxk"]
+[ext_resource type="Texture2D" uid="uid://cxfg3daa0leoc" path="res://Assets/VFX/3/1_1.png" id="4_w6u8n"]
+[ext_resource type="Texture2D" uid="uid://cihhqbevrnebs" path="res://Assets/VFX/3/1_2.png" id="5_1w28u"]
+[ext_resource type="Texture2D" uid="uid://cw052cmsyyoci" path="res://Assets/VFX/3/1_3.png" id="6_nar27"]
+[ext_resource type="Texture2D" uid="uid://dhcw78xrq5h5w" path="res://Assets/VFX/3/1_4.png" id="7_oa44v"]
+[ext_resource type="Texture2D" uid="uid://d1gennxxo6yd3" path="res://Assets/VFX/3/1_5.png" id="8_2qlxe"]
+[ext_resource type="Texture2D" uid="uid://cs3krpbafchfy" path="res://Assets/VFX/3/1_6.png" id="9_i22s5"]
+[ext_resource type="Texture2D" uid="uid://dub40322gj081" path="res://Assets/VFX/3/1_7.png" id="10_scq1w"]
+[ext_resource type="Texture2D" uid="uid://216horj2af6n" path="res://Assets/VFX/3/1_8.png" id="11_ofsp2"]
+[ext_resource type="Texture2D" uid="uid://dxe8g4dibf37f" path="res://Assets/VFX/3/1_9.png" id="12_53lm7"]
+[ext_resource type="Texture2D" uid="uid://cuya74g3av2ph" path="res://Assets/VFX/3/1_10.png" id="13_k130l"]
+[ext_resource type="Texture2D" uid="uid://b1ol3inf8eev3" path="res://Assets/VFX/3/1_11.png" id="14_tc5r7"]
+[ext_resource type="Texture2D" uid="uid://cssmy1beu80vh" path="res://Assets/VFX/Sparks-Sheet.png" id="15_u7soa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41inv"]
+atlas = ExtResource("3_txuk3")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x67il"]
+atlas = ExtResource("4_w6u8n")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw4b8"]
+atlas = ExtResource("5_1w28u")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6dc4"]
+atlas = ExtResource("6_nar27")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22ojj"]
+atlas = ExtResource("7_oa44v")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt5h8"]
+atlas = ExtResource("8_2qlxe")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d64b"]
+atlas = ExtResource("9_i22s5")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1dhb"]
+atlas = ExtResource("10_scq1w")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvis7"]
+atlas = ExtResource("11_ofsp2")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq77t"]
+atlas = ExtResource("12_53lm7")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yink"]
+atlas = ExtResource("13_k130l")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hb8w"]
+atlas = ExtResource("14_tc5r7")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_auj43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41inv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x67il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw4b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6dc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22ojj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt5h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d64b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1dhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvis7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq77t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yink")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hb8w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp2l2"]
+atlas = ExtResource("15_u7soa")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faoov"]
+atlas = ExtResource("15_u7soa")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pebgf"]
+atlas = ExtResource("15_u7soa")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwkut"]
+atlas = ExtResource("15_u7soa")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bnvn"]
+atlas = ExtResource("15_u7soa")
+region = Rect2(192, 96, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtoil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp2l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faoov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pebgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwkut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bnvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faoov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwkut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp2l2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="Intro" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -540.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_lhtco")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -17,10 +179,76 @@ texture = ExtResource("1_bryvo")
 hframes = 3
 vframes = 2
 
+[node name="ShipDamage" type="Node" parent="Sprite2D"]
+
+[node name="Flame 1" type="AnimatedSprite2D" parent="Sprite2D/ShipDamage"]
+position = Vector2(-25, 33)
+rotation = 0.383972
+sprite_frames = SubResource("SpriteFrames_auj43")
+autoplay = "default"
+
+[node name="Flame 2" type="AnimatedSprite2D" parent="Sprite2D/ShipDamage"]
+z_index = -1
+position = Vector2(10, -66)
+rotation = -0.383972
+sprite_frames = SubResource("SpriteFrames_auj43")
+autoplay = "default"
+flip_h = true
+
+[node name="Sparks" type="AnimatedSprite2D" parent="Sprite2D/ShipDamage"]
+z_index = -1
+position = Vector2(45, 40)
+rotation = 0.603884
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_jtoil")
+autoplay = "default"
+
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -10
 texture_filter = 1
 scale = Vector2(10, 10)
 texture = ExtResource("2_q5f8q")
 
-[node name="Node" type="Node" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_left = -960.0
+offset_top = 322.0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -940.0
+offset_top = 340.0
+offset_right = 581.0
+offset_bottom = 420.0
+
+[node name="DialogueLabel1" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_d3vxk")
+theme_override_font_sizes/font_size = 100
+text = "Lieutenant: Captain, our engines are dead, we are stuck here.."
+
+[node name="DialogueLabel2" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_d3vxk")
+theme_override_font_sizes/font_size = 100
+text = "Crew member: So that's it then...we are done.."
+
+[node name="DialogueLabel3" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_d3vxk")
+theme_override_font_sizes/font_size = 100
+text = "Captain: We are in enemy space, don't let your guard down, we might still..."
+
+[node name="DialogueLabel4" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_d3vxk")
+theme_override_font_sizes/font_size = 100
+text = "Crew Member: CAPTAIN! Enemy signatures inbound, multiple!.."
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 0)

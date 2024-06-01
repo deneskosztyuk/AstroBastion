@@ -1,34 +1,30 @@
-extends Node2D
-
-@export var main_game_scene = "res://Scenes/main_game.tscn"  # Use string for the scene path
+extends Control
 
 @onready var labels = [
-	$Control/Panel/Label1,
-	$Control/Panel/Label2,
-	$Control/Panel/Label3,
-	$Control/Panel/Label4  # Add more labels as needed
+	$VBoxContainer/DialogueLabel1,
+	$VBoxContainer/DialogueLabel2,
+	$VBoxContainer/DialogueLabel3,
+	$VBoxContainer/DialogueLabel4
 ]
 
 var current_label_index = 0
 
 func _ready():
-	show_current_label()
+	# Connect the input event
 	set_process_input(true)
+	update_labels()
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		advance_dialogue()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		current_label_index += 1
+		if current_label_index < labels.size():
+			update_labels()
+		else:
+			load_main_game()
 
-func advance_dialogue():
-	current_label_index += 1
-	if current_label_index < labels.size():
-		show_current_label()
-	else:
-		start_main_game()
-
-func show_current_label():
+func update_labels():
 	for i in range(labels.size()):
 		labels[i].visible = (i == current_label_index)
 
-func start_main_game():
-	get_tree().change_scene_to_file(main_game_scene)
+func load_main_game():
+	get_tree().change_scene_to_file("res://Scenes/main_game.tscn")

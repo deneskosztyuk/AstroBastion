@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://58tswnjq8jqw"
+path="res://.godot/imported/_8 Bit Space Groove!_ Chill Pretty Chiptune Game Music by HeatleyBros.mp3-4e76e88e748dd284bd8d421beac8e409.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/_8 Bit Space Groove!_ Chill Pretty Chiptune Game Music by HeatleyBros.mp3"
+dest_files=["res://.godot/imported/_8 Bit Space Groove!_ Chill Pretty Chiptune Game Music by HeatleyBros.mp3-4e76e88e748dd284bd8d421beac8e409.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

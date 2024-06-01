@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bdym0vi2or5dp"]
+[gd_scene load_steps=37 format=3 uid="uid://bdym0vi2or5dp"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_kyhvt"]
 [ext_resource type="Texture2D" uid="uid://bb2cbsdn3804x" path="res://Assets/UI/Screenshot_28-5-2024_18502_chatgpt.com.jpeg" id="1_up74w"]
@@ -16,9 +16,27 @@
 [ext_resource type="Texture2D" uid="uid://dxe8g4dibf37f" path="res://Assets/VFX/3/1_9.png" id="13_pq8rn"]
 [ext_resource type="Texture2D" uid="uid://cuya74g3av2ph" path="res://Assets/VFX/3/1_10.png" id="14_2k3cl"]
 [ext_resource type="Texture2D" uid="uid://b1ol3inf8eev3" path="res://Assets/VFX/3/1_11.png" id="15_srhe4"]
+[ext_resource type="AudioStream" uid="uid://58tswnjq8jqw" path="res://Assets/Audio/_8 Bit Space Groove!_ Chill Pretty Chiptune Game Music by HeatleyBros.mp3" id="17_hbl3r"]
+[ext_resource type="AudioStream" uid="uid://bkdhtgiqpbbcn" path="res://Assets/Audio/Retro7.mp3" id="18_i82mn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7ipo"]
 bg_color = Color(0, 0, 0.00784314, 0.117647)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h43t3"]
+font = ExtResource("3_62yta")
+font_size = 60
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cbyss"]
+font = ExtResource("3_62yta")
+font_size = 60
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41inv"]
 atlas = ExtResource("4_aoui2")
@@ -142,10 +160,11 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_up74w")
 
 [node name="MenuPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 210.0
 offset_top = 492.0
-offset_right = 653.0
+offset_right = 681.0
 offset_bottom = 845.0
 
 [node name="Panel" type="Panel" parent="."]
@@ -165,13 +184,13 @@ offset_bottom = 893.0
 
 [node name="KillCountLabel" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_62yta")
-theme_override_font_sizes/font_size = 60
+label_settings = SubResource("LabelSettings_h43t3")
 
 [node name="SurvivalTimeLabel" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_62yta")
 theme_override_font_sizes/font_size = 60
+label_settings = SubResource("LabelSettings_cbyss")
 
 [node name="NewGameButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -224,3 +243,15 @@ sprite_frames = SubResource("SpriteFrames_kq1s3")
 autoplay = "default"
 frame_progress = 0.992029
 flip_v = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_hbl3r")
+volume_db = -25.0
+autoplay = true
+
+[node name="ClickSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_i82mn")
+
+[node name="SceneSwitchTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Panel/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]

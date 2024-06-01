@@ -25,8 +25,8 @@ radius = 36.0139
 [node name="EnemyT1" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 script = ExtResource("1_0k3ii")
-speed = 100
-damage = 75
+speed = 80
+damage = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
