@@ -15,11 +15,15 @@ run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameData="*res://scripts/GameData.gd"
+
 [display]
 
 window/size/viewport_width=960
 window/size/viewport_height=540
-window/size/mode=3
+window/stretch/scale=0.5
 
 [editor]
 

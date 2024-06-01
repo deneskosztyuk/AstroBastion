@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdwh5c7ug7owo"]
+
+[ext_resource type="Texture2D" uid="uid://wkubr7bykoyi" path="res://Assets/Turrets/turret_01_mk3.png" id="1_7rbb1"]
+[ext_resource type="Script" path="res://scripts/ui_turret_t_1.gd" id="1_fhuli"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dj0o"]
+atlas = ExtResource("1_7rbb1")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a12w4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dj0o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="UI_TurretT1" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 9.0
+offset_bottom = 10.0
+script = ExtResource("1_fhuli")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a12w4")
+animation = &"idle"

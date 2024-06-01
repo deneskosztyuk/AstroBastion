@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw7xxlyvt6mmv"]
+
+[ext_resource type="Texture2D" uid="uid://dkkkqmho1452" path="res://Assets/Spaceship/Spike_SpriteSheet.png" id="1_bryvo"]
+[ext_resource type="Texture2D" uid="uid://canq6bd5a444w" path="res://Assets/UI/Space Background.png" id="2_q5f8q"]
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_bryvo")
+hframes = 3
+vframes = 2
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -10
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("2_q5f8q")

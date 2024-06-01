@@ -22,20 +22,20 @@ func _ready():
 	spawn_timer.connect("timeout", Callable(self, "_on_spawn_timer_timeout"))
 	spawn_timer.wait_time = 5.0 # Set the time interval for spawning enemies
 	spawn_timer.start()
-	
+
 	# Instantiate the UI scene and add it to the main scene
 	ui_instance = UI.instantiate()
 	add_child(ui_instance)
-	
+
 	print("UI instance added to the scene.")
 	update_turret_count_label_t1()
 	update_resource_label()
 	update_kill_count_label()
 	update_time_remaining_label()
-	
+
 	# Connect the turret_button_pressed signal to the _on_turret_button_pressed function
 	ui_instance.connect("turret_button_pressed", Callable(self, "_on_turret_button_pressed"))
-	
+
 	# Setup and start the timer
 	timer.wait_time = 1.0
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
@@ -108,11 +108,14 @@ func add_resource(amount):
 func increment_kill_count():
 	kill_count += 1
 	update_kill_count_label()
+	GameData.update_kill_count(1)  # Update the global kill count
 
 func _on_timer_timeout():
 	elapsed_time += 1
 	update_time_remaining_label()
-	
+	GameData.update_survival_time(1.0)  # Update the global survival time
+
 func spaceship_destroyed():
 	print("Spaceship destroyed. Elapsed time: " + str(elapsed_time))
 	timer.stop()
+	GameData.set_final_data(kill_count, float(elapsed_time))  # Set the final data

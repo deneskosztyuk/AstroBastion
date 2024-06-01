@@ -26,7 +26,7 @@ radius = 36.0139
 collision_layer = 2
 script = ExtResource("1_0k3ii")
 speed = 100
-damage = 5
+damage = 75
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)

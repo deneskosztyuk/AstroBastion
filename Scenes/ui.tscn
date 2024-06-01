@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_7b0j5"]
 [ext_resource type="Texture2D" uid="uid://8fu6r6popyxb" path="res://Assets/UI/UI_Flat_Frame_01_Standard.png" id="1_jf8sm"]
-[ext_resource type="PackedScene" uid="uid://daedxkydy8e3t" path="res://Scenes/TurretT1.tscn" id="2_7lyj0"]
 [ext_resource type="Texture2D" uid="uid://bhqbyx28y5q88" path="res://Assets/Turrets/weapons.png" id="3_772ty"]
+[ext_resource type="PackedScene" uid="uid://cdwh5c7ug7owo" path="res://Scenes/ui_turret_t_1.tscn" id="4_hx2uw"]
 [ext_resource type="Texture2D" uid="uid://dw7r1ry56hly7" path="res://Assets/UI/Skillicon7_32.png" id="4_im4s2"]
 [ext_resource type="Texture2D" uid="uid://cpd2t613m6csp" path="res://Assets/UI/Skillicon7_19.png" id="5_de1ir"]
 [ext_resource type="Texture2D" uid="uid://dxjjme4otnl12" path="res://Assets/UI/Skillicon7_05.png" id="6_1qr6v"]
@@ -86,11 +86,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanonTurret" type="Sprite2D" parent="Camera2D/Control"]
 texture_filter = 1
-position = Vector2(-150, 220)
+position = Vector2(-50, 220)
 texture = ExtResource("1_jf8sm")
-
-[node name="TurretT1Visual" parent="Camera2D/Control/CanonTurret" instance=ExtResource("2_7lyj0")]
-position = Vector2(0, 8)
 
 [node name="CostLabel" type="Label" parent="Camera2D/Control/CanonTurret"]
 offset_left = -39.0
@@ -107,7 +104,11 @@ position = Vector2(69, 12)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_im4s2")
 
-[node name="TurretT1Button2" type="Button" parent="Camera2D/Control/CanonTurret"]
+[node name="UI_TurretT1" parent="Camera2D/Control/CanonTurret" instance=ExtResource("4_hx2uw")]
+offset_top = 8.0
+offset_bottom = 18.0
+
+[node name="TurretT1Button" type="Button" parent="Camera2D/Control/CanonTurret"]
 offset_left = -47.0
 offset_top = -47.0
 offset_right = 47.0
@@ -124,7 +125,7 @@ text = "0/3
 
 [node name="RocketTurret" type="Sprite2D" parent="Camera2D/Control"]
 texture_filter = 1
-position = Vector2(-50, 220)
+position = Vector2(50, 220)
 texture = ExtResource("1_jf8sm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Control/RocketTurret"]
@@ -154,6 +155,7 @@ offset_bottom = -27.0
 text = "0/2"
 
 [node name="LaserTurret" type="Sprite2D" parent="Camera2D/Control"]
+visible = false
 texture_filter = 1
 position = Vector2(50, 220)
 texture = ExtResource("1_jf8sm")
@@ -186,6 +188,7 @@ offset_bottom = -27.0
 text = "0/2"
 
 [node name="RailgunTurret" type="Sprite2D" parent="Camera2D/Control"]
+visible = false
 texture_filter = 1
 position = Vector2(150, 220)
 texture = ExtResource("1_jf8sm")
@@ -259,4 +262,4 @@ offset_right = 115.0
 offset_bottom = 15.0
 label_settings = SubResource("LabelSettings_rlrse")
 
-[connection signal="pressed" from="Camera2D/Control/CanonTurret/TurretT1Button2" to="." method="_on_turret_t_1_button_2_pressed"]
+[connection signal="pressed" from="Camera2D/Control/CanonTurret/TurretT1Button" to="." method="_on_turret_t_1_button_2_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://bdym0vi2or5dp"]
+[gd_scene load_steps=33 format=3 uid="uid://bdym0vi2or5dp"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_kyhvt"]
 [ext_resource type="Texture2D" uid="uid://bb2cbsdn3804x" path="res://Assets/UI/Screenshot_28-5-2024_18502_chatgpt.com.jpeg" id="1_up74w"]
+[ext_resource type="FontFile" uid="uid://dgwg5i7d2wh33" path="res://Assets/Misc/m3x6.ttf" id="3_62yta"]
 [ext_resource type="Texture2D" uid="uid://55bibvv0c5qt" path="res://Assets/Misc/Asteroid 01 - Explode.png" id="3_sx3o8"]
 [ext_resource type="Texture2D" uid="uid://cklt6qbodxme1" path="res://Assets/VFX/3/1_0.png" id="4_aoui2"]
 [ext_resource type="Texture2D" uid="uid://cxfg3daa0leoc" path="res://Assets/VFX/3/1_1.png" id="5_184ke"]
@@ -144,8 +145,8 @@ texture = ExtResource("1_up74w")
 layout_mode = 0
 offset_left = 210.0
 offset_top = 492.0
-offset_right = 566.0
-offset_bottom = 816.0
+offset_right = 653.0
+offset_bottom = 845.0
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -162,26 +163,40 @@ offset_top = 581.0
 offset_right = 736.0
 offset_bottom = 893.0
 
+[node name="KillCountLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_62yta")
+theme_override_font_sizes/font_size = 60
+
+[node name="SurvivalTimeLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_62yta")
+theme_override_font_sizes/font_size = 60
+
 [node name="NewGameButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_62yta")
+theme_override_font_sizes/font_size = 60
 text = "New Game"
 
 [node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_62yta")
+theme_override_font_sizes/font_size = 60
 text = "Options"
 
 [node name="CreditButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_62yta")
+theme_override_font_sizes/font_size = 60
 text = "Credit
 "
 
 [node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_62yta")
+theme_override_font_sizes/font_size = 60
 text = "Exit"
 
 [node name="Asteroid" type="Node" parent="."]
