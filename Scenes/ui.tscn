@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1ax2b0grxser"]
+[gd_scene load_steps=18 format=3 uid="uid://d1ax2b0grxser"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_7b0j5"]
 [ext_resource type="Texture2D" uid="uid://8fu6r6popyxb" path="res://Assets/UI/UI_Flat_Frame_01_Standard.png" id="1_jf8sm"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dw7r1ry56hly7" path="res://Assets/UI/Skillicon7_32.png" id="4_im4s2"]
 [ext_resource type="Texture2D" uid="uid://cpd2t613m6csp" path="res://Assets/UI/Skillicon7_19.png" id="5_de1ir"]
 [ext_resource type="Texture2D" uid="uid://dxjjme4otnl12" path="res://Assets/UI/Skillicon7_05.png" id="6_1qr6v"]
+[ext_resource type="FontFile" uid="uid://dgwg5i7d2wh33" path="res://Assets/Misc/m3x6.ttf" id="6_uy0h8"]
+[ext_resource type="Texture2D" uid="uid://catxrk20ebsi5" path="res://Assets/UI/Asset 9@0.5x.png" id="8_34gmr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7x61k"]
 font_size = 15
@@ -59,7 +61,8 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rlrse"]
-font_size = 22
+font = ExtResource("6_uy0h8")
+font_size = 48
 
 [node name="UI" type="Node2D"]
 visibility_layer = 2
@@ -229,9 +232,9 @@ texture = ExtResource("4_im4s2")
 
 [node name="ResourceLabel" type="Label" parent="Camera2D/Control/Resource"]
 offset_left = -905.0
-offset_top = -536.0
+offset_top = -542.0
 offset_right = -769.0
-offset_bottom = -505.0
+offset_bottom = -511.0
 label_settings = SubResource("LabelSettings_rlrse")
 
 [node name="KillCount" type="Node" parent="Camera2D/Control"]
@@ -241,11 +244,11 @@ z_index = 1
 position = Vector2(-737, -520)
 texture = ExtResource("5_de1ir")
 
-[node name="KillCountLabel" type="Label" parent="Camera2D/Control/KillCount/KillCountIcon"]
-offset_left = 12.0
-offset_top = -16.0
-offset_right = 152.0
-offset_bottom = 15.0
+[node name="KillCountLabel" type="Label" parent="Camera2D/Control/KillCount"]
+offset_left = -725.0
+offset_top = -542.0
+offset_right = -585.0
+offset_bottom = -504.0
 label_settings = SubResource("LabelSettings_rlrse")
 
 [node name="TimeRemaining" type="Node" parent="Camera2D/Control"]
@@ -255,11 +258,26 @@ z_index = 1
 position = Vector2(-553, -520)
 texture = ExtResource("6_1qr6v")
 
-[node name="TimeRemainingLabel" type="Label" parent="Camera2D/Control/TimeRemaining/TimeRemainingObj"]
-offset_left = 11.0
-offset_top = -16.0
-offset_right = 115.0
-offset_bottom = 15.0
+[node name="TimeRemainingLabel" type="Label" parent="Camera2D/Control/TimeRemaining"]
+offset_left = -542.0
+offset_top = -542.0
+offset_right = -438.0
+offset_bottom = -504.0
+label_settings = SubResource("LabelSettings_rlrse")
+
+[node name="Wave" type="Node" parent="Camera2D/Control"]
+
+[node name="WaveObj" type="Sprite2D" parent="Camera2D/Control/Wave"]
+z_index = 1
+position = Vector2(-230, -520)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_34gmr")
+
+[node name="WaveLabel" type="Label" parent="Camera2D/Control/Wave"]
+offset_left = -217.0
+offset_top = -542.0
+offset_right = -95.0
+offset_bottom = -504.0
 label_settings = SubResource("LabelSettings_rlrse")
 
 [connection signal="pressed" from="Camera2D/Control/CanonTurret/TurretT1Button" to="." method="_on_turret_t_1_button_2_pressed"]

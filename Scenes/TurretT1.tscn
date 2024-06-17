@@ -50,5 +50,8 @@ position = Vector2(0, -72)
 
 [node name="ShootTimer" type="Timer" parent="."]
 
+[node name="FrontReference" type="Marker2D" parent="."]
+position = Vector2(0, -60)
+
 [connection signal="body_entered" from="TargetLockZone" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="TargetLockZone" to="." method="_on_area_2d_body_exited"]

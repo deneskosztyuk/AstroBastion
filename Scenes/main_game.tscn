@@ -231,13 +231,13 @@ wait_time = 5.0
 script = ExtResource("19_ypt12")
 
 [node name="SpawnPoint1" parent="." instance=ExtResource("20_mjtn0")]
-position = Vector2(1102, 867)
+position = Vector2(1095, -7)
 
 [node name="SpawnPoint2" parent="." instance=ExtResource("20_mjtn0")]
-position = Vector2(-1356, 575)
+position = Vector2(-484, 1006)
 
 [node name="SpawnPoint3" parent="." instance=ExtResource("20_mjtn0")]
-position = Vector2(-4, -997)
+position = Vector2(-1185, -393)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_kkk7f")
@@ -249,3 +249,6 @@ stream = ExtResource("22_ta5cw")
 volume_db = -35.0
 pitch_scale = 0.4
 autoplay = true
+
+[node name="BreakTimer" type="Timer" parent="."]
+wait_time = 15.0
