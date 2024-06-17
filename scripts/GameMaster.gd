@@ -1,13 +1,15 @@
 extends Node2D
 
 @onready var spaceship = get_node_or_null("/root/MainGame/Spaceship")
-@export var enemy_scene = preload("res://Scenes/enemy_t_1.tscn")
-@export var TurretT1 = preload("res://Scenes/TurretT1.tscn")
+@export var enemy_scene: PackedScene = preload("res://Scenes/enemy_t_1.tscn")
+@export var TurretT1: PackedScene = preload("res://Scenes/TurretT1.tscn")
 @onready var spawn_timer = $SpawnTimer
-@export var UI = preload("res://Scenes/UI.tscn")
+@export var UI: PackedScene = preload("res://Scenes/ui.tscn")  # Ensure this matches the exact case of your file
+@onready var background_music = $"../BackgroundMusic"
+@onready var siren = $"../Siren"
 
-var turret_instance = null
-var ui_instance = null
+var turret_instance: Node = null
+var ui_instance: Node = null
 var max_turrets_t1 = 3
 var turret_count_t1 = 0
 var resource = 50
@@ -16,9 +18,17 @@ var kill_count = 0
 var elapsed_time = 0
 var timer = Timer.new()
 
+var spawn_points = []
+
 func _ready():
 	if spaceship == null:
 		push_error("Spaceship node not found!")
+	
+	# Find all spawn points in the scene
+	for spawn_point in get_tree().get_root().get_node("MainGame").get_children():
+		if spawn_point is Marker2D and spawn_point.name.begins_with("SpawnPoint"):
+			spawn_points.append(spawn_point)
+	
 	spawn_timer.connect("timeout", Callable(self, "_on_spawn_timer_timeout"))
 	spawn_timer.wait_time = 5.0 # Set the time interval for spawning enemies
 	spawn_timer.start()
@@ -42,6 +52,20 @@ func _ready():
 	add_child(timer)
 	timer.start()
 
+	# Configure and start the background music
+	if background_music:
+		var bg_music_stream = background_music.stream
+		if bg_music_stream:
+			bg_music_stream.set_loop(true)  # Set the stream to loop
+		background_music.play()
+		
+	# Configure and start the siren
+	if siren:
+		var siren_stream = siren.stream
+		if siren_stream:
+			siren_stream.set_loop(true)  # Set the stream to loop
+		siren.play()
+
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if turret_instance:
@@ -57,12 +81,15 @@ func _on_spawn_timer_timeout():
 	spawn_enemy()
 
 func spawn_enemy():
+	if spawn_points.size() == 0:
+		return # No spawn points available
+	
+	var random_spawn_point = spawn_points[randi() % spawn_points.size()]
 	var enemy_instance = enemy_scene.instantiate()
-	var rand_x = randf_range(-200.0, 2300.0)
-	var rand_y = randf_range(-200.0, 1500.0)
-	enemy_instance.global_position = Vector2(rand_x, rand_y)
+	enemy_instance.global_position = random_spawn_point.global_position
 	add_child(enemy_instance)
-
+	enemy_instance.look_at(spaceship.global_position) # Make the enemy face the spaceship
+	
 func _on_turret_button_pressed(turret_type):
 	if turret_type == "TurretT1":
 		if turret_count_t1 < max_turrets_t1 and resource >= turret_cost:

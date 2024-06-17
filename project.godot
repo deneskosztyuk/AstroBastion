@@ -13,6 +13,9 @@ config_version=5
 config/name="Astro Bastion"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0.0235294, 0.0901961, 0.129412, 1)
+boot_splash/image="res://Assets/Misc/ITGlogo-removebg-preview.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -33,3 +36,5 @@ version_control/autoload_on_startup=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

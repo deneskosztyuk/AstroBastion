@@ -1,12 +1,11 @@
 extends Control
 
 @onready var audio_player_click = $ClickSoundPlayer
-@onready var audio_player_bg = $BackgroundMusicPlayer
+@onready var audio_player_bg = $BackgroundMusic
 @onready var scene_switch_timer = $SceneSwitchTimer
 
 func _ready():
 	# Connect the button signals to the corresponding functions
-	$Panel/VBoxContainer/NewGameButton.pressed.connect(_on_new_game_button_pressed)
 	$Panel/VBoxContainer/OptionsButton.pressed.connect(_on_OptionsButton_pressed)
 	$Panel/VBoxContainer/CreditButton.pressed.connect(_on_CreditButton_pressed)
 	$Panel/VBoxContainer/ExitButton.pressed.connect(_on_ExitButton_pressed)
@@ -52,4 +51,4 @@ func _on_SceneSwitchTimer_timeout():
 	# Load the Intro scene after the delay
 	get_tree().paused = false
 	GameData.reset_data()  # Reset data for the new game
-	get_tree().change_scene_to_file("res://Scenes/Intro.tscn")
+	get_tree().change_scene_to_file("res://Scenes/intro.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bdym0vi2or5dp"]
+[gd_scene load_steps=41 format=3 uid="uid://bdym0vi2or5dp"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_kyhvt"]
 [ext_resource type="Texture2D" uid="uid://bb2cbsdn3804x" path="res://Assets/UI/Screenshot_28-5-2024_18502_chatgpt.com.jpeg" id="1_up74w"]
@@ -18,9 +18,18 @@
 [ext_resource type="Texture2D" uid="uid://b1ol3inf8eev3" path="res://Assets/VFX/3/1_11.png" id="15_srhe4"]
 [ext_resource type="AudioStream" uid="uid://58tswnjq8jqw" path="res://Assets/Audio/_8 Bit Space Groove!_ Chill Pretty Chiptune Game Music by HeatleyBros.mp3" id="17_hbl3r"]
 [ext_resource type="AudioStream" uid="uid://bkdhtgiqpbbcn" path="res://Assets/Audio/Retro7.mp3" id="18_i82mn"]
+[ext_resource type="Texture2D" uid="uid://cncnlufuvybjn" path="res://Assets/Misc/ITGlogo-removebg-preview.png" id="19_hcn7s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7ipo"]
 bg_color = Color(0, 0, 0.00784314, 0.117647)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tkbo2"]
+font = ExtResource("3_62yta")
+font_size = 60
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h43t3"]
 font = ExtResource("3_62yta")
@@ -145,6 +154,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_6pmkh"]
+offsets = PackedFloat32Array(0, 0.878641)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lwf2j"]
+gradient = SubResource("Gradient_6pmkh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0)
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -181,6 +200,11 @@ offset_left = 391.0
 offset_top = 581.0
 offset_right = 736.0
 offset_bottom = 893.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Your last best score:"
+label_settings = SubResource("LabelSettings_tkbo2")
 
 [node name="KillCountLabel" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -221,6 +245,7 @@ text = "Exit"
 [node name="Asteroid" type="Node" parent="."]
 
 [node name="Flame 2" type="AnimatedSprite2D" parent="Asteroid"]
+visible = false
 position = Vector2(1809, 777)
 rotation = 2.2061
 scale = Vector2(4, 4)
@@ -236,13 +261,20 @@ sprite_frames = SubResource("SpriteFrames_yy7lq")
 autoplay = "default"
 
 [node name="Flame 1" type="AnimatedSprite2D" parent="Asteroid"]
-position = Vector2(1757.29, 729)
+position = Vector2(1794, 683)
 rotation = 2.28464
-scale = Vector2(4, 4)
+scale = Vector2(5.15952, 7.93946)
 sprite_frames = SubResource("SpriteFrames_kq1s3")
 autoplay = "default"
 frame_progress = 0.992029
 flip_v = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Asteroid"]
+position = Vector2(1805, 749)
+scale = Vector2(1.65625, 1.82813)
+color = Color(0.882353, 0.109804, 0.0627451, 1)
+energy = 16.0
+texture = SubResource("GradientTexture2D_lwf2j")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_hbl3r")
@@ -253,5 +285,11 @@ autoplay = true
 stream = ExtResource("18_i82mn")
 
 [node name="SceneSwitchTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(55, 46)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_hcn7s")
 
 [connection signal="pressed" from="Panel/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]

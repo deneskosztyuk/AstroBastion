@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3i2t5u133omn"
+path="res://.godot/imported/fridge humming - sound effect.mp3-95e92da4c3f028ea0ba9404845b4aa56.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/fridge humming - sound effect.mp3"
+dest_files=["res://.godot/imported/fridge humming - sound effect.mp3-95e92da4c3f028ea0ba9404845b4aa56.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

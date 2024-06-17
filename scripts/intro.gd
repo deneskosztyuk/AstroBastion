@@ -7,12 +7,18 @@ extends Control
 	$VBoxContainer/DialogueLabel4
 ]
 
+@onready var engine_humming_sound = $EngineHummingSound
+
 var current_label_index = 0
 
 func _ready():
 	# Connect the input event
 	set_process_input(true)
 	update_labels()
+	
+	# Set the audio to loop and play it
+	engine_humming_sound.stream.loop = true
+	engine_humming_sound.play()
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

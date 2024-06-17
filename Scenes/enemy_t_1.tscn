@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d14lsnjx8p6jw"]
+[gd_scene load_steps=20 format=3 uid="uid://d14lsnjx8p6jw"]
 
 [ext_resource type="Script" path="res://scripts/EnemyT1.gd" id="1_0k3ii"]
 [ext_resource type="Texture2D" uid="uid://dj0dlskvr7txm" path="res://Assets/Enemy/BlueRedGreen_Spacecraft_V1.0.png" id="2_dtann"]
 [ext_resource type="PackedScene" uid="uid://cv5xivsgypcjs" path="res://Scenes/healthbar.tscn" id="3_745t4"]
+[ext_resource type="Texture2D" uid="uid://bd1dn7b3o7nig" path="res://Assets/VFX/Free Smoke Fx  Pixel 06.png" id="4_dcdpx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j3tve"]
 atlas = ExtResource("2_dtann")
@@ -22,13 +23,99 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_i24e1"]
 radius = 36.0139
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_82upt"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv255"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_547kx"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2aua"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(192, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drr04"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(256, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6cw1"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(320, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85xtp"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(384, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oc6n"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(448, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e4ue"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(512, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sviww"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(576, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfjkh"]
+atlas = ExtResource("4_dcdpx")
+region = Rect2(640, 384, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7l4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82upt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv255")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_547kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2aua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drr04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6cw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85xtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3oc6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e4ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sviww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfjkh")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 15.0
+}]
+
 [node name="EnemyT1" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 script = ExtResource("1_0k3ii")
 speed = 80
-damage = 5
+damage = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_kmsys")
 
@@ -37,9 +124,20 @@ position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_i24e1")
 
 [node name="Healthbar" parent="." instance=ExtResource("3_745t4")]
+visible = false
 offset_left = -33.0
 offset_top = -44.0
 offset_right = 31.0
 offset_bottom = -40.0
 max_value = 50.0
 value = 50.0
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_h7l4i")
+animation = &"explode"
+frame = 10
+frame_progress = 0.0152203
+
+[node name="DeathTimer" type="Timer" parent="."]

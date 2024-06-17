@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var Projectile: PackedScene
 @onready var target_lock_zone = $TargetLockZone
 @export var _rotation_speed = 3.0
-@export var shooting_interval = 0.5  # Adjust the shooting interval as needed
+@export var shooting_interval = 0.4  # Adjust the shooting interval as needed
 
 var is_shooting = false
 var target = null

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://csgfyfw6mam6g"]
+
+[ext_resource type="Script" path="res://scripts/Explosion.gd" id="1_icwv6"]
+[ext_resource type="AudioStream" uid="uid://cpgh4i6xr40sm" path="res://Assets/Audio/8-Bit Explosion 2 - Sound Effect (HD).mp3" id="2_lomla"]
+
+[sub_resource type="Curve" id="Curve_wcu84"]
+_data = [Vector2(0.0434783, 0.989011), 0.0, 0.0, 0, 0, Vector2(0.956522, 0.241758), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ci14h"]
+offsets = PackedFloat32Array(0, 0.806931)
+colors = PackedColorArray(1, 1, 0, 1, 0.941176, 0, 0, 1)
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_icwv6")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+emitting = false
+amount = 64
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 300.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_wcu84")
+color_ramp = SubResource("Gradient_ci14h")
+
+[node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(2, 2)
+stream = ExtResource("2_lomla")
+volume_db = -15.0

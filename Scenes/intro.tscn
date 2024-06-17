@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dw7xxlyvt6mmv"]
+[gd_scene load_steps=39 format=3 uid="uid://dw7xxlyvt6mmv"]
 
 [ext_resource type="Texture2D" uid="uid://dkkkqmho1452" path="res://Assets/Spaceship/Spike_SpriteSheet.png" id="1_bryvo"]
 [ext_resource type="Script" path="res://scripts/intro.gd" id="1_lhtco"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://cuya74g3av2ph" path="res://Assets/VFX/3/1_10.png" id="13_k130l"]
 [ext_resource type="Texture2D" uid="uid://b1ol3inf8eev3" path="res://Assets/VFX/3/1_11.png" id="14_tc5r7"]
 [ext_resource type="Texture2D" uid="uid://cssmy1beu80vh" path="res://Assets/VFX/Sparks-Sheet.png" id="15_u7soa"]
+[ext_resource type="AudioStream" uid="uid://ctxgnjeiam50b" path="res://Assets/Audio/Republic Cruiser Siren-Alarm [5 min].mp3" id="18_c25s5"]
+[ext_resource type="AudioStream" uid="uid://3i2t5u133omn" path="res://Assets/Audio/fridge humming - sound effect.mp3" id="19_7pe8m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41inv"]
 atlas = ExtResource("3_txuk3")
@@ -252,3 +254,14 @@ text = "Crew Member: CAPTAIN! Enemy signatures inbound, multiple!.."
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, 0)
+
+[node name="Siren" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_c25s5")
+volume_db = -25.0
+pitch_scale = 0.4
+autoplay = true
+
+[node name="EngineHummingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_7pe8m")
+volume_db = -15.0
+autoplay = true
